@@ -11,6 +11,8 @@
 \usepackage{color}
 \usepackage{parskip}
 \usepackage{hyperref}
+\usepackage{quiver}
+\usepackage{array}
   \hypersetup{
     colorlinks = true,
     urlcolor = blue,       % color of external links using \href
@@ -88,6 +90,131 @@
 \subsubsection{MU Puzzle}
 
 It is impossible to solve the MU puzzle. The only way to change the amount of I’s is to double them with rule 2, or subtract 3 with rule 3. In order to get rid of all the I’s you would have to have them in groups of 3. A power of x is divisible by 3 only if x is a multiple of 3, because the prime factorization of a number must include the prime number 3 for the number to be divisible by 3. So, you would have to get an original group divisible by 3, which is impossible.
+
+\subsection{Week 2}
+
+\subsubsection{Rewriting}
+
+1. \quad A=\{\}\\
+Empty ARS\\
+Terminating: Yes\\
+Confluent: Yes\\
+Has Unique Normal Forms: Yes
+
+2. \quad A=\{a\}\quad and \quad {R}=\{\}
+
+\begin{tikzcd}
+	a
+\end{tikzcd}\\
+Terminating: Yes\\
+Confluent: Yes\\
+Has Unique Normal Forms: Yes
+
+3. \quad A=\{a\}\quad and \quad {R}=\{(a,a)\}
+
+\begin{tikzcd}
+	a
+	\arrow[from=1-1, to=1-1, loop, in=55, out=125, distance=10mm]
+\end{tikzcd}\\
+Terminating: No\\
+Confluent: Yes\\
+Has Unique Normal Forms: No
+
+4. \quad A=\{a,b,c\}\quad and \quad {R}=\{(a,b),(a,c)\}
+
+\begin{tikzcd}
+	&& b \\
+	a \\
+	&& c
+	\arrow[from=2-1, to=1-3]
+	\arrow[from=2-1, to=3-3]
+\end{tikzcd}\\
+Terminating: Yes\\
+Confluent: No\\
+Has Unique Normal Forms: No
+
+5. \quad A=\{a,b\}\quad and \quad {R}=\{(a,a),(a,b)\}
+
+\begin{tikzcd}
+	a && b
+	\arrow[from=1-1, to=1-1, loop, in=55, out=125, distance=10mm]
+	\arrow[from=1-1, to=1-3]
+\end{tikzcd}\\
+Terminating: No\\
+Confluent: Yes\\
+Has Unique Normal Forms: Yes
+
+6. \quad A=\{a,b,c\}\quad and \quad {R}=\{(a,b),(b,b),(a,c)\}
+
+\begin{tikzcd}
+	&& b \\
+	a \\
+	&& c
+	\arrow[from=1-3, to=1-3, loop, in=55, out=125, distance=10mm]
+	\arrow[from=2-1, to=1-3]
+	\arrow[from=2-1, to=3-3]
+\end{tikzcd}\\
+Terminating: No\\
+Confluent: No\\
+Has Unique Normal Forms: No
+
+7. \quad A=\{a,b,c\}\quad and \quad {R}=\{(a,b),(b,b),(a,c),(c,c)\}
+
+\begin{tikzcd}
+	&& b \\
+	a \\
+	&& c
+	\arrow[from=1-3, to=1-3, loop, in=55, out=125, distance=10mm]
+	\arrow[from=2-1, to=1-3]
+	\arrow[from=2-1, to=3-3]
+	\arrow[from=3-3, to=3-3, loop, in=55, out=125, distance=10mm]
+\end{tikzcd}\\
+Terminating: No\\
+Confluent: No\\
+Has Unique Normal Forms: No
+
+\begin{tabular}{|c|c|c|c|}
+\hline
+confluent & terminating & has unique normal forms & example \\
+\hline
+True  & True  & True  & 
+\begin{tikzcd}
+	a
+\end{tikzcd}\\
+True  & True  & False & IMPOSSIBLE \\
+True  & False & True  & 
+\begin{tikzcd}
+	a && b
+	\arrow[from=1-1, to=1-1, loop, in=55, out=125, distance=10mm]
+	\arrow[from=1-1, to=1-3]
+\end{tikzcd}\\
+True  & False & False & 
+\begin{tikzcd}
+	a
+	\arrow[from=1-1, to=1-1, loop, in=55, out=125, distance=10mm]
+\end{tikzcd}\\
+False & True  & True  & IMPOSSIBLE \\
+False & True  & False &  
+\begin{tikzcd}
+	&& b \\
+	a \\
+	&& c
+	\arrow[from=2-1, to=1-3]
+	\arrow[from=2-1, to=3-3]
+\end{tikzcd}\\
+False & False & True  & IMPOSSIBLE \\
+False & False & False & 
+\begin{tikzcd}
+	&& b \\
+	a \\
+	&& c
+	\arrow[from=1-3, to=1-3, loop, in=55, out=125, distance=10mm]
+	\arrow[from=2-1, to=1-3]
+	\arrow[from=2-1, to=3-3]
+	\arrow[from=3-3, to=3-3, loop, in=55, out=125, distance=10mm]
+\end{tikzcd}\\
+\hline
+\end{tabular}
 
 \section{Essay}
 
