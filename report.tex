@@ -216,6 +216,50 @@ False & False & False &
 \hline
 \end{tabular}
 
+\subsection{Week 3}
+
+\subsubsection{Homework}
+
+\textbf{Exercise 5}
+
+ab → ba\\
+ba → ab\\
+aa →\\
+b →\\
+
+abba → aba → aa →\\
+bababa → ababa → aaba → aaa → a
+
+The ARS isn’t terminating because it has the loop ab → ba, ba → ab.
+
+In the above example, abba → , bababa → a, which makes them non-equivalent. There are infinitely many non-equivalent strings, because all strings with an even number of a’s are only equivalent to each other, and all strings with an odd number of a’s are only equivalent to each other.
+
+There are 2 equivalence classes, all strings with an odd number of a’s that have normal form a, and all strings with an even number of a’s that have normal form of an empty string.
+
+By getting rid of the first 2 rules, the ARS is terminating, with the same equivalence classes. There is no longer a loop, and you can still get rid of the same letters.
+
+How would you have to modify the ARS so that there is only one equivalence class?
+
+\textbf{Exercise 5b}
+
+ab → ba\\
+ba → ab\\
+aa → a\\
+b →
+
+abba → aba → aa → a\\
+bababa → ababa → aaba → aaa → aa → a
+
+The ARS isn’t terminating because it has the loop ab → ba, ba → ab.
+
+bbb and aba are not equivalent. There are infinitely many non-equivalent strings, any string that has all b’s is not equivalent to any string that has at least one a in it.
+
+There are 2 equivalence classes, all strings that have no a’s have the normal form of an empty string. All strings that have at least one a have the normal form a.
+
+By getting rid of the first 2 rules, the ARS is terminating, with the same equivalence classes. There is no longer a loop, and you can still get rid of the same letters.
+
+What would happen if aa → a was changed to aaa → a?
+
 \section{Essay}
 
 \section{Evidence of Participation}
