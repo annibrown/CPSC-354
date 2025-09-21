@@ -260,6 +260,59 @@ By getting rid of the first 2 rules, the ARS is terminating, with the same equiv
 
 What would happen if aa → a was changed to aaa → a?
 
+\subsection{Week 4}
+
+\subsubsection{Homework}
+
+\textbf{4.1}
+
+\begin{verbatim}
+while b != 0:
+    temp = b
+    b = a mod b
+    a = temp
+return a
+\end{verbatim}
+
+This algorithm always terminates under the condition that $a,b \in \mathbb {N}$.
+
+We can define this ARS as: $A = {(a, b) |a,b \in \mathbb {N}}$, with transition, (a, b) → (b, a mod b).
+
+A measure function is: $\phi(a,b) = b$.
+
+Since a → b every iteration, if b is decreasing, so is a. In the transition, b → a mod b, a mod b will always be less than b, so, $\phi(a, b) > \phi$(b, a mod b). Since this algorithm has a measure function, it terminates.
+
+\textbf{4.2}
+
+\begin{verbatim}
+function merge_sort(arr, left, right):
+    if left >= right:
+        return
+    mid = (left + right) / 2
+    merge_sort(arr, left, mid)
+    merge_sort(arr, mid+1, right)
+    merge(arr, left, mid, right)
+\end{verbatim}
+
+Prove that $\phi(left, right) = right - left + 1$ is a measure function.
+
+For recursive calls, $left \le mid < right$.
+
+For the left side recursive call:\\
+merge sort(arr, left, mid) = mid - left + 1\\
+right > mid, so, right - left + 1 > mid - left + 1\\
+$\phi(left, right) > \phi(left, mid)$\\
+This call terminates
+
+For the right side recursive call:\\
+merge sort(arr, mid + 1, right) = right - (mid + 1) + 1\\
+$mid \ge left$, so, mid + 1 > left\\
+right - left + 1 > right - (mid + 1) + 1 \\
+$\phi(left, right) > \phi(mid + 1, right)$\\
+This call terminates
+
+Since both calls terminate, $\phi(left, right) = right - left + 1$ is a measure function for merge sort.
+
 \section{Essay}
 
 \section{Evidence of Participation}
