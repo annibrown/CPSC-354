@@ -313,6 +313,36 @@ This call terminates
 
 Since both calls terminate, $\phi(left, right) = right - left + 1$ is a measure function for merge sort.
 
+\subsection{Week 4}
+
+\subsubsection{Homework}
+
+($\lambda$f.$\lambda$x.f(f(x))) ($\lambda$f.$\lambda$x.(f(f(f x))))
+
+alpha rule:\\
+($\lambda$g.$\lambda$y.g(g(y))) ($\lambda$f.$\lambda$x.(f(f(f x))))
+
+beta rule:\\
+($\lambda$y.($\lambda$f.$\lambda$x.(f(f(f x)))) (($\lambda$f.$\lambda$x.(f(f(f x))))(y)))
+
+beta rule:\\
+($\lambda$y.($\lambda$f.$\lambda$x.(f(f(f x)))) ($\lambda$x.(y(y(y x)))))
+
+alpha rule:\\
+($\lambda$y.($\lambda$f.$\lambda$z.(f(f(f z)))) ($\lambda$x.(y(y(y x)))))
+
+beta rule:\\
+($\lambda$y.($\lambda$z.(($\lambda$x.(y(y(y x))))(($\lambda$x.(y(y(y x))))(($\lambda$x.(y(y(y x))))z)))))
+
+beta rule:\\
+($\lambda$y.($\lambda$z.(($\lambda$x.(y(y(y x))))(($\lambda$x.(y(y(y x))))(y(y(y z)))))))
+
+beta rule:\\
+($\lambda$y.($\lambda$z.(($\lambda$x.(y(y(y x))))(y(y(y (y(y(y z)))))))))
+
+beta rule:\\
+($\lambda$y.($\lambda$z.(y(y(y(y(y(y(y(y(y z)))))))))))
+
 \section{Essay}
 
 \section{Evidence of Participation}
