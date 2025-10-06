@@ -343,6 +343,72 @@ beta rule:\\
 beta rule:\\
 ($\lambda$y.($\lambda$z.(y(y(y(y(y(y(y(y(y z)))))))))))
 
+\subsection{Week 6}
+
+\subsubsection{Homework}
+
+let rec fact = $\lambda$n. if n=0 then 1 else n * fact (n-1) in fact 3
+
+-> <def of let rec>\\
+let fact = (fix ($\lambda$fact. $\lambda$n. if n=0 then 1 else n * fact (n-1))) in fact 3
+
+-> <def of let>\\
+($\lambda$fact. fact 3) (fix ($\lambda$fact. $\lambda$n. if n=0 then 1 else n * fact (n-1)))
+
+-> <beta rule: substitute fix F>\\
+(fix ($\lambda$fact. $\lambda$n. if n=0 then 1 else n * fact (n-1))) 3
+
+-> <def of fix>\\
+(($\lambda$fact. $\lambda$n. if n=0 then 1 else n * fact (n-1)) (fix ($\lambda$fact. $\lambda$n. if n=0 then 1 else n * fact (n-1)))) 3
+
+-> <beta rule: substitute fix F>\\
+($\lambda$n. if n=0 then 1 else n * (fix ($\lambda$fact. $\lambda$n. if n=0 then 1 else n * fact (n-1))) (n-1)) 3
+
+-> <beta rule: substitute 3>\\
+if 3=0 then 1 else 3 * (fix ($\lambda$fact. $\lambda$n. if n=0 then 1 else n * fact (n-1))) (3-1)
+
+-> <def of if>\\
+3 * (fix ($\lambda$fact. $\lambda$n. if n=0 then 1 else n * fact (n-1))) 2
+
+-> <def of fix>\\
+3 * (($\lambda$fact. $\lambda$n. if n=0 then 1 else n * fact (n-1)) (fix ($\lambda$fact. $\lambda$n. if n=0 then 1 else n * fact (n-1)))) 2
+
+-> <beta rule>\\
+3 * ($\lambda$n. if n=0 then 1 else n * (fix ($\lambda$fact. $\lambda$n. if n=0 then 1 else n * fact (n-1))) (n-1)) 2
+
+-> <beta rule>\\
+3 * (if 2=0 then 1 else 2 * (fix ($\lambda$fact. $\lambda$n. if n=0 then 1 else n * fact (n-1))) (2-1))
+
+-> <def of if>\\
+3 * (2 * (fix ($\lambda$fact. $\lambda$n. if n=0 then 1 else n * fact (n-1))) 1)
+
+-> <def of fix>\\
+3 * (2 * (($\lambda$fact. $\lambda$n. if n=0 then 1 else n * fact (n-1)) (fix ($\lambda$fact. $\lambda$n. if n=0 then 1 else n * fact (n-1)))) 1)
+
+-> <beta rule>\\
+3 * (2 * ($\lambda$n. if n=0 then 1 else n * (fix ($\lambda$fact. $\lambda$n. if n=0 then 1 else n * fact (n-1)))(n-1)) 1)
+
+-> <beta rule>\\
+3 * (2 * (if 1=0 then 1 else 1 * (fix ($\lambda$fact. $\lambda$n. if n=0 then 1 else n * fact (n-1)))(1-1)))
+
+-> <def of if>\\
+3 * (2 * (1 * (fix ($\lambda$fact. $\lambda$n. if n=0 then 1 else n * fact (n-1))) 0))
+
+-> <def of fix>\\
+3 * (2 * (1 * (($\lambda$fact. $\lambda$n. if n=0 then 1 else n * fact (n-1)) (fix ($\lambda$fact. $\lambda$n. if n=0 then 1 else n * fact (n-1)))) 0))
+
+-> <beta rule>\\
+3 * (2 * (1 * ($\lambda$n. if n=0 then 1 else n * (fix ($\lambda$fact. $\lambda$n. if n=0 then 1 else n * fact (n-1))) (n-1)) 0))
+
+-> <beta rule>\\
+3 * (2 * (1 * (if 0=0 then 1 else 0 * (fix ($\lambda$fact. $\lambda$n. if n=0 then 1 else n * fact (n-1))) (0-1))))
+
+-> <def of if>\\
+3 * (2 * (1 * (1)))
+
+-> <multiplication>\\
+6
+
 \section{Essay}
 
 \section{Evidence of Participation}
