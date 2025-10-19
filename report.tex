@@ -420,6 +420,43 @@ if 3=0 then 1 else 3 * (fix ($\lambda$fact. $\lambda$n. if n=0 then 1 else n * f
     \includegraphics[width=\linewidth]{image.png}
 \end{figure}
 
+\subsection{Week 8}
+
+\subsubsection{Homework}
+
+\begin{verbatim}
+Level 5: a + (b + 0) + (c + 0) = a + b + c
+rw[add_zero]
+rw[add_zero]
+rfl
+
+Level 6: a + (b + 0) + (c + 0) = a + b + c
+rw[add_zero c]
+rw[add_zero]
+rfl
+
+Level 7: For all natural numbers a, we have succ(a) = a + 1
+rw[one_eq_succ_zero]
+rw[add_succ]
+rw[add_zero]
+rfl
+
+Level 8: 2 + 2 = 4
+rw[four_eq_succ_three]
+rw[three_eq_succ_two]
+rw[two_eq_succ_one]
+rw[one_eq_succ_zero]
+rw[add_succ]
+rw[add_succ]
+rw[add_zero]
+rfl
+
+Natural Language Proof of Level 5:
+a + (b + 0) + (c + 0) = a + b + c
+a + b + c = a + b + c	              by algorithm 1: addition (m + 0 = 0)
+True by reflexivity
+\end{verbatim}
+
 \section{Essay}
 
 \section{Evidence of Participation}
