@@ -457,6 +457,57 @@ a + b + c = a + b + c	              by algorithm 1: addition (m + 0 = 0)
 True by reflexivity
 \end{verbatim}
 
+\subsection{Week 9}
+
+\subsubsection{Homework}
+
+\begin{verbatim}
+ADDITION WORLD LEVEL 5
+
+WITH INDUCTION: a + b + c = a + c + b
+
+induction b
+rw[add_zero]
+rw[add_zero]
+rfl
+rw[add_succ]
+rw[succ_add]
+rw[add_succ]
+rw[n_ih]
+rfl
+
+a + b + c = a + c + b
+
+Induction on b:
+Basis: 		a + 0 + c = a + c + 0
+			a + c = a + c + 0	      def of +
+			a + c = a + c		      def of +
+			True by reflexivity
+
+Inductive Hypothesis: a + n + c = a + c + n
+
+Inductive Step:	a + n↷ + c = a + c + n↷
+			    (a + n)↷ + c = a + c + n↷	    def of +
+			    (a + n + c)↷ =  a + c + n↷	    def of +
+			    (a + n + c)↷ =  a + (c + n)↷	def of +
+			    (a + n + c)↷ =  (a + c + n)↷	def of +
+			    (a + c + n)↷ = (a + c + n)↷	inductive hypothesis
+			    True by reflexivity
+			
+WITHOUT INDUCTION: a + b + c = a + c + b
+
+rw[add_assoc]
+rw[add_comm b]
+rw[add_assoc]
+rfl
+
+(a + b) + c = (a + c) + b
+a + (b + c) = (a + c) + b	associativity
+a + (c + b) = (a + c) + b	commutativity
+(a + c) + b = (a + c) + b	associativity
+True by reflexivity
+\end{verbatim}
+
 \section{Essay}
 
 \section{Evidence of Participation}
