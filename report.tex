@@ -531,6 +531,26 @@ Discord Question:
 Why do we need to use a placeholder when there is no evidence?
 \end{verbatim}
 
+\subsection{Week 11}
+
+\subsubsection{Homework}
+
+\begin{verbatim}
+FALSIFICATION
+
+LEVEL 9: example (A P : Prop) (h : P → ¬A) : ¬(P ∧ A) := by
+exact λ ⟨p, a⟩ => (h p) a
+
+LEVEL 10: example (A P : Prop) (h: ¬(P ∧ A)) : P → ¬A := by
+exact λ p a => h ⟨p, a⟩
+
+LEVEL 11: example (A : Prop)(h : ¬¬¬A) : ¬A := by
+exact λ a => h (λ na => na a)
+
+LEVEL 12: example (B C : Prop) (h : ¬(B → C)) : ¬¬B := by
+exact λ nb => h (λ b => False.elim (nb b)) 
+\end{verbatim}
+
 \section{Essay}
 
 \section{Evidence of Participation}
