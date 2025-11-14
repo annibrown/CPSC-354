@@ -551,6 +551,59 @@ LEVEL 12: example (B C : Prop) (h : ¬(B → C)) : ¬¬B := by
 exact λ nb => h (λ b => False.elim (nb b)) 
 \end{verbatim}
 
+\subsection{Week 12}
+
+\subsubsection{Homework}
+
+\begin{verbatim}
+hanoi 5 0 2  
+	hanoi 4 0 1 
+		hanoi 3 0 2
+			hanoi 2 0 1 
+				hanoi 1 0 2 = move 0 2 
+				move  0 1
+				hanoi 1 2 1 = move 2 1 
+			move 0 2  
+			hanoi 2 1 2  
+				hanoi 1 1 0 = move 1 0  
+				move  1 2  
+				hanoi 1 0 2 = move 0 2 
+        move 0 1
+        hanoi 3 2 1
+            hanoi 2 2 0
+                hanoi 1 2 1 = move 2 1
+                move 2 0
+                hanoi 1 1 0 = move 1 0
+            move 2 1
+            hanoi 2 0 1
+                hanoi 1 0 2 = move 0 2
+                move 0 1
+                hanoi 1 2 1 = move 2 1
+    move 0 2
+    hanoi 4 1 2
+        hanoi 3 1 0
+            hanoi 2 1 2
+                hanoi 1 1 0 = move 1 0
+                move 1 2
+                hanoi 1 0 2 = move 0 2
+            move 1 0
+            hanoi 2 2 0
+                hanoi 1 2 1 = move 2 1
+                move 2 0
+                hanoi 1 1 0 = move 1 0
+        move 1 2
+        hanoi 3 0 2
+            hanoi 2 0 1
+                hanoi 1 0 2 = move 0 2
+                move 0 1
+                hanoi 1 2 1 = move 2 1
+            move 0 2
+            hanoi 2 1 2
+                hanoi 1 1 0 = move 1 0
+                move 1 2
+                hanoi 1 0 2 = move 0 2
+\end{verbatim}
+
 \section{Essay}
 
 \section{Evidence of Participation}
