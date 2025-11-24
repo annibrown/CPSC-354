@@ -635,7 +635,44 @@ hanoi 5 0 2
 7. 
 ((\m.\n. m n) (\f.\x. f (f x))) (\f.\x. f (f (f x))) 
 ((\Var1. (\f.\x. f (f x)) Var1) ) (\f.\x. f (f (f x)))
+((\Var1. (\Var2.\x. Var2 (Var2 x)) Var1) ) (\f.\x. f (f (f x)))
+((\Var2.\Var3. Var2 (Var2 Var3)) (\f.\x. f (f (f x))) )
+((\Var2.\Var4. Var2 (Var2 Var4)) (\f.\x. f (f (f x))) )
+(\Var5.((\f.(\x.(f (f (f x))))) ((\f.(\x.(f (f (f x))))) Var5)))
 
+8. 
+12: eval (((\m.(\n.(m n))) (\f.(\x.(f (f x))))) (\f.(\x.(f x)))) 
+39: eval ((\m.(\n.(m n))) (\f.(\x.(f (f x)))))
+	39: eval (\m.(\n.(m n)))
+	44: sub ( (\n.(m n)), m, (\f.(\x.(f (f x)))) )
+		82: sub ( (m Var1), m, (\f.(\x.(f (f x)))) )
+			82: sub ( (m n), n, Var1 )
+				85: sub ( m, n, Var1 )
+				85: sub ( n, n, Var1 )
+			85: sub ( m, m, (\f.(\x.(f (f x)))) )
+			85: sub ( Var1, m, (\f.(\x.(f (f x)))) )
+	45: eval (\Var1.((\f.(\x.(f (f x)))) Var1))
+44: sub ( ((\f.(\x.(f (f x)))) Var1), Var1, (\f.(\x.(f x))) )
+85: sub ( (\f.(\x.(f (f x)))),  Var1, (\f.(\x.(f x))) )
+	82: sub ( (\Var3.(Var2 (Var2 Var3))), Var1, (\f.(\x.(f x))) )
+	82: sub ( (\x.(f (f x))), f, Var2 )
+		82: sub ( (f (f x)), x, Var4 )
+			85: sub ( f, x, Var4 )
+			85: sub ( (f x), x, Var4 )
+				85: sub ( f, x, Var4 )
+85: sub ( x, x, Var4 )
+				82: sub ( (f (f Var4)), f, Var2 )
+					85: sub ( f, f, Var2 )
+					85: sub ( (f Var4), f, Var2 )
+						85: sub ( f, f, Var2 )
+						85: sub ( Var4, f, Var2 )
+85: sub ( Var1,  Var1, (\f.(\x.(f x))) )
+	45: eval ((\Var2.(\Var5.(Var2 (Var2 Var5)))) (\f.(\x.(f x))))
+		39: eval (\Var2.(\Var5.(Var2 (Var2 Var5))))
+		44: sub ( (\Var5.(Var2 (Var2 Var5))), Var2, (\f.(\x.(f x))) )
+		45: eval (\Var6.((\f.(\x.(f x))) ((\f.(\x.(f x))) Var6)))
+
+Discord Question: Are there any situations where the debugger can't or shouldn't be used?
 \end{verbatim}
 
 \section{Essay}
