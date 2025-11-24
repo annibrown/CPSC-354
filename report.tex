@@ -604,6 +604,40 @@ hanoi 5 0 2
                 hanoi 1 0 2 = move 0 2
 \end{verbatim}
 
+
+\subsection{Week 13}
+
+\subsubsection{Homework}
+
+\begin{verbatim}
+2. I added ((ab)c)
+    It should reduce to a b c
+    It reduced to (ab c)
+
+   I added (\x. (\y. x)) y
+   It became (\Var1.y), which is correct
+
+   I added (\x. x x) (\x. x x)
+   It resulted in: recursion error: maximum recursion depth exceeded
+
+3. Avoiding capture substitution works by adding new variables like Var1 since in some cases there are two variables with the same name, like x, but they are actually different.
+   I added (\x. (\y. x)) y, and it became (\Var1.y), so it avoided capture substitution.
+   It is implemented by having it generate a new variable name if the expression starts with a lambda and has a different variable name for tree[1].
+
+4. I don’t always get the expected result.
+    I added ((ab)c), and it should reduce to a b c, but it reduced to (ab c), which is correct, but not what I expected.
+    Not all computations reduce to normal form.
+    I added (\x. x x) (\x. x x)
+    It resulted in: recursion error: maximum recursion depth exceeded  
+
+5. The smallest expression I can find that does not reduce to normal form is (\x. x x) (\x. x x)
+
+7. 
+((\m.\n. m n) (\f.\x. f (f x))) (\f.\x. f (f (f x))) 
+((\Var1. (\f.\x. f (f x)) Var1) ) (\f.\x. f (f (f x)))
+
+\end{verbatim}
+
 \section{Essay}
 
 \section{Evidence of Participation}
